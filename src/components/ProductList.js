@@ -3,9 +3,17 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from '../redux/actions/productActions';
 import Product from './Product';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop:20
+      }
+}));
 
 const ProductList = () => {
+    const classes = useStyles();
     const products = useSelector((state) => state.allProducts.products);
     const [loading,setLoadingState] = useState(true);
     const dispatch = useDispatch();
@@ -27,11 +35,11 @@ const ProductList = () => {
             {
             loading && <h2>LOADING</h2>
             }
-            <Grid container spacing={2}>
+            <Grid container className={classes.root}>
                 <Grid item xs={1} sm={1} />
-                <Grid item xs={10} sm={10}>
-                <Grid container spacing={2}><Product /></Grid>
-                    </Grid>
+                <Grid item container xs={10} sm={10} spacing={1}>
+                        <Product />
+                </Grid>
                 <Grid item xs={1} sm={1} />
             </Grid>
 

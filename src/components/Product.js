@@ -10,8 +10,8 @@ const Product = () => {
     const renderList = products.map((product) => {
         const {id,title,price,description,category,image} = product;
         return(
-            <Grid item xs={12} sm={3} key={id}>
-                <Link to={`product/${id}`}>
+            <Grid item xs={12} sm={3} key={id} alignItems="center">
+                <Link className="linkTag" to={`product/${id}`}>
                 <ProductCard {...product} />
                 </Link>
             </Grid>

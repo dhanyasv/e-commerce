@@ -10,8 +10,8 @@ import './App.css'
 const App = () => {
     return (
         <div className="App">
-            <Grid container spacing={2}>
-            <Grid item xs={12} >
+            <Grid container >
+            <Grid container item xs={12} >
                 <Header />
             </Grid>
             <Router >
