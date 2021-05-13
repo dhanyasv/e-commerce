@@ -2,6 +2,9 @@ import { ActionTypes } from "../constants/actionTypes";
 const initialState = {
     products : []
 }
+const initialCount = {
+    count:0
+}
 export const productReducer = (state = initialState,{type,payload}) => {
     switch (type) {
         case ActionTypes.SET_PRODUCTS:
@@ -17,6 +20,14 @@ export const selectedProductReducer = (state = {},{type,payload}) => {
             return {...state,...payload};
         case ActionTypes.REMOVE_SELECTED_PRODUCT:
                 return {};
+        default:
+            return state;
+    }
+}
+export const addedProductCountReducer = (state = initialCount,action) => {
+    switch (action.type) {
+        case ActionTypes.ADDED_PRODUCT_COUNT:
+            return {count:state.count += 1};   
         default:
             return state;
     }

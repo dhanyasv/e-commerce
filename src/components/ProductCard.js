@@ -5,30 +5,39 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from '@material-ui/icons/Star';
+import Button from '@material-ui/core/Button';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
-        height:375,
-        padding:"5px 5px"
+        height:500,
+        paddingTop:40,
+        [theme.breakpoints.down('sm')]: {
+            height: 'auto',
+            textAlign: 'center',
+            margin: 0
+          },
+        padding:"5px 5px",
+        textAlign : "center"
       },
       media: {
         objectFit :"contain"
+      },
+      star:{
+        color:'red'
       },
     title:{
         ...theme.typography.button,
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(1),
-    }
+    },
+    button: {
+        margin: theme.spacing(1),
+      },
 }));
-const productRating = () =>{
-    const ratingGroup = [5,4,3,2,1];
-    ratingGroup.forEach((val) =>{
-        return(
-             <StarIcon></StarIcon>
-        )
-    })
-}
+
+
 export default function ProductCard(props) {
   const classes = useStyles();
   return (
@@ -43,29 +52,21 @@ export default function ProductCard(props) {
           <div className={classes.title}  >
             {props.title}
           </div>
-          {productRating}
+          { [...Array(5)].map(
+                (value, index) => (
+                <StarIcon className={classes.star} id={index + 1} key={index} />
+                )) 
+          }
           <Typography variant="h5" gutterBottom>
             $ {props.price}
           </Typography>
+          <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={<AddShoppingCartIcon>Add To Cart</AddShoppingCartIcon>}
+      ></Button>
         </CardContent> 
-
-      {/* <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src={props.image} />
-      </ButtonBase>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {props.description}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        
-      </CardActions> */}
     </Card>
   );
 }

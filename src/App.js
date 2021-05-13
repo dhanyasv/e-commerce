@@ -10,18 +10,18 @@ import './App.css'
 const App = () => {
     return (
         <div className="App">
-            <Grid container >
-            <Grid container item xs={12} >
-                <Header />
-            </Grid>
             <Router >
+                <Grid container >
+                <Grid container item xs={12} >
+                    <Header />
+                </Grid>
                 <Switch>
                 <Route path='/' exact component={ ProductList} />
                 <Route path='/product/:productId' exact component={ ProductDetail} />
                 <Route>404 Not Found</Route>
                 </Switch>
+                </Grid>
             </Router>
-            </Grid>
         </div>
     )
 }

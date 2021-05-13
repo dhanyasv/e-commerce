@@ -5,6 +5,7 @@ import { setProducts } from '../redux/actions/productActions';
 import Product from './Product';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const ProductList = () => {
     const classes = useStyles();
     const products = useSelector((state) => state.allProducts.products);
-    const [loading,setLoadingState] = useState(true);
+    const [loading,setLoadingState] = useState(false);
     const dispatch = useDispatch();
     const fetchedProducts = async () => {
         const response = await axios.get('https://fakestoreapi.com/products')
@@ -24,8 +25,8 @@ const ProductList = () => {
         });
         if(response.data){
             setLoadingState(false);
+            dispatch(setProducts(response.data));
         }
-        dispatch(setProducts(response.data));
     }
     useEffect(() => {
         fetchedProducts()
@@ -33,7 +34,8 @@ const ProductList = () => {
     return (
             <>
             {
-            loading && <h2>LOADING</h2>
+            loading &&      <div className="progress-bar"><LinearProgress /></div> 
+
             }
             <Grid container className={classes.root}>
                 <Grid item xs={1} sm={1} />
