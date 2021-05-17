@@ -27,7 +27,7 @@ export const selectedProductReducer = (state = {},{type,payload}) => {
 export const addedProductCountReducer = (state = initialCount,action) => {
     switch (action.type) {
         case ActionTypes.ADDED_PRODUCT_COUNT:
-            return {count:state.count += 1};   
+            return {...state,count:state.count += 1};   
         default:
             return state;
     }

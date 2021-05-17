@@ -60,12 +60,7 @@ export default function ProductCard(props) {
           <Typography variant="h5" gutterBottom>
             $ {props.price}
           </Typography>
-          <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                endIcon={<AddShoppingCartIcon>Add To Cart</AddShoppingCartIcon>}
-      ></Button>
+          
         </CardContent> 
     </Card>
   );

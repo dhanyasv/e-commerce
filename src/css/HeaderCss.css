@@ -1,0 +1,12 @@
+.shoping-basket {
+  position: relative;
+}
+.basket-text,
+.basket-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.basket-text {
+  z-index: 10;
+}

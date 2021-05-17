@@ -9,7 +9,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop:20
+        marginTop:100
       }
 }));
 
@@ -34,8 +34,7 @@ const ProductList = () => {
     return (
             <>
             {
-            loading &&      <div className="progress-bar"><LinearProgress /></div> 
-
+            loading &&<div className="progress-bar"><LinearProgress /></div> 
             }
             <Grid container className={classes.root}>
                 <Grid item xs={1} sm={1} />
